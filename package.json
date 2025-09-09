@@ -1,0 +1,33 @@
+{
+  "name": "ayursutra-panchakarma-mvp",
+  "version": "1.0.0",
+  "description": "AyurSutra - Panchakarma Patient Management & Therapy Scheduling Software",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "test": "cd backend && npm test && cd ../frontend && npm test",
+    "install-deps": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
+  },
+  "keywords": [
+    "ayurveda",
+    "panchakarma",
+    "healthcare",
+    "appointment-scheduling",
+    "therapy-management",
+    "react",
+    "nodejs",
+    "mongodb"
+  ],
+  "author": "AyurSutra Development Team",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
