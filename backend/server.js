@@ -43,6 +43,22 @@ app.get('/', (req, res) => {
   });
 });
 
+// Health check endpoint
+app.get('/health', async (req, res) => {
+  try {
+    const { performHealthCheck } = require('./healthcheck');
+    const healthStatus = await performHealthCheck();
+    const statusCode = healthStatus.status === 'healthy' ? 200 : 503;
+    res.status(statusCode).json(healthStatus);
+  } catch (error) {
+    res.status(500).json({
+      status: 'unhealthy',
+      timestamp: new Date().toISOString(),
+      error: error.message
+    });
+  }
+});
+
 // API Routes (to be implemented)
 app.use('/api/v1/auth', require('./routes/auth'));
 app.use('/api/v1/patients', require('./routes/patients'));
